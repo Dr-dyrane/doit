@@ -31,6 +31,7 @@ Doit is a minimalist to-do list app that allows you to create and manage your ta
 ## Technologies Used
 
 - React
+- Vite
 - React Spring
 - Tailwind CSS
 
@@ -57,7 +58,7 @@ To get started with Doit, follow these steps:
    npm start
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3000](http://localhost:5173) in your browser.
 
 ## Usage
 
