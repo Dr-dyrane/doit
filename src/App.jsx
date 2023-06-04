@@ -1,31 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 import Form from "./Form";
 import DoitItem from "./DoitItem";
 
 function App() {
   const [doits, setDoits] = useState([]);
 
+  useEffect(() => {
+    const storedDoits = localStorage.getItem("doits");
+    if (storedDoits) {
+      setDoits(JSON.parse(storedDoits));
+    }
+  }, []);
+
   function addDoit(newItem) {
-    setDoits((current) => [
-      ...current,
-      {
-        id: crypto.randomUUID(),
+    if (newItem.trim() !== "") {
+      const newDoit = {
+        id: uuid(),
         title: newItem,
         completed: false,
-      },
-    ]);
+      };
+
+      const updatedDoits = [...doits, newDoit];
+      setDoits(updatedDoits);
+      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+    }
   }
 
   function handleCheck(id) {
-    setDoits((current) =>
-      current.map((doit) =>
-        doit.id === id ? { ...doit, completed: !doit.completed } : doit
-      )
+    const updatedDoits = doits.map((doit) =>
+      doit.id === id ? { ...doit, completed: !doit.completed } : doit
     );
+    setDoits(updatedDoits);
+    localStorage.setItem("doits", JSON.stringify(updatedDoits));
   }
 
   function handleDelete(id) {
-    setDoits((current) => current.filter((doit) => doit.id !== id));
+    if (window.confirm("Are you sure you want to delete this task?")) {
+      const updatedDoits = doits.filter((doit) => doit.id !== id);
+      setDoits(updatedDoits);
+      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+    }
   }
 
   return (

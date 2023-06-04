@@ -8,8 +8,7 @@ function DoitItem({ doit, handleCheck, handleDelete }) {
           type="checkbox"
           checked={doit.completed}
           onChange={() => handleCheck(doit.id)}
-          className="rounded appearance-none h-4 w-4 border border-gray-300 
-          checked:bg-yellow-500 checked:border-transparent"
+          className="rounded appearance-none h-4 w-4 border border-gray-300 checked:bg-yellow-500 checked:border-transparent"
         />
         <span
           className={`ml-2 ${doit.completed ? "line-through text-white" : ""}`}
@@ -20,8 +19,7 @@ function DoitItem({ doit, handleCheck, handleDelete }) {
       <button
         type="button"
         onClick={() => handleDelete(doit.id)}
-        className="bg-transparent border border-red-500 text-red-500 
-        hover:bg-red-700 hover:text-white px-4 py-2 rounded-lg"
+        className="bg-transparent border border-red-500 text-red-500 hover:bg-red-700 hover:text-white px-4 py-2 rounded-lg"
       >
         Delete
       </button>
