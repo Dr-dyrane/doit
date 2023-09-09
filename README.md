@@ -11,6 +11,7 @@ A simple to-do list application built with React.
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Access](#Access)
 - [License](#license)
 
 ## Author
@@ -71,6 +72,12 @@ To get started with Doit, follow these steps:
 ## Contributing
 
 Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
+
+## Access
+
+You can access the Doit application by visiting the following URL:
+
+[Doit - To-Do List App](https://doit-by-dyrane.netlify.app)
 
 ## License
 
