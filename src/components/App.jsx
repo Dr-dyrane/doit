@@ -8,7 +8,7 @@ function App() {
   const [doits, setDoits] = useState([]);
 
   // Define the base URL of your Netlify Functions
-  const baseUrl = "/.netlify/functions";
+  const baseUrl = "https://doit.dr-dyrane.tech/.netlify/functions";
 
   // Fetch the list of doits from the backend when the component mounts
   useEffect(() => {
