@@ -7,30 +7,16 @@ function App() {
   // State to hold the list of doits
   const [doits, setDoits] = useState([]);
 
-  // Define the base URL of your Netlify Functions
-  const baseUrl = "https://doit.dr-dyrane.tech/.netlify/functions";
-
-  // Fetch the list of doits from the backend when the component mounts
+  // Fetch the list of doits from local storage when the component mounts
   useEffect(() => {
-    // Define the function to fetch doits
-    const fetchDoits = async () => {
-      try {
-        const response = await fetch(`${baseUrl}/getDoits`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch doits");
-        }
-        const data = await response.json();
-        setDoits(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchDoits(); // Call the function to fetch doits
+    const localData = localStorage.getItem("doits");
+    if (localData) {
+      setDoits(JSON.parse(localData));
+    }
   }, []);
 
   // Function to add a new doit
-  async function addDoit(newItem) {
+  function addDoit(newItem) {
     if (newItem.trim() !== "") {
       const newDoit = {
         id: uuid(),
@@ -38,91 +24,31 @@ function App() {
         completed: false,
       };
 
-      try {
-        // Perform the local storage operation
-        const localData = localStorage.getItem("doits");
-        let updatedDoits = localData ? JSON.parse(localData) : [];
-        updatedDoits.push(newDoit);
-
-        // Update the state and local storage
-        setDoits(updatedDoits);
-        localStorage.setItem("doits", JSON.stringify(updatedDoits));
-
-        // Send a POST request to add the new doit to the backend
-        const response = await fetch(`${baseUrl}/addDoit`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newDoit),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to add a new doit");
-        }
-
-        const data = await response.json();
-        updatedDoits = [...doits, data];
-        setDoits(updatedDoits);
-        localStorage.setItem("doits", JSON.stringify(updatedDoits));
-      } catch (error) {
-        console.error("Error adding data:", error);
-      }
+      // Update the state and local storage
+      const updatedDoits = [...doits, newDoit];
+      setDoits(updatedDoits);
+      localStorage.setItem("doits", JSON.stringify(updatedDoits));
     }
   }
 
   // Function to handle checking/unchecking a doit
-  async function handleCheck(id) {
+  function handleCheck(id) {
     const updatedDoits = doits.map((doit) =>
       doit.id === id ? { ...doit, completed: !doit.completed } : doit
     );
 
-    try {
-      // Perform the local storage operation
-      setDoits(updatedDoits);
-      localStorage.setItem("doits", JSON.stringify(updatedDoits));
-
-      // Send a PUT request to update the status of the selected doit on the backend
-      const response = await fetch(`${baseUrl}/updateDoit`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedDoits.find((doit) => doit.id === id)),
-      });
-
-      if (!response.ok) {
-        throw an Error("Failed to update the doit");
-      }
-    } catch (error) {
-      console.error("Error updating data:", error);
-    }
+    // Update the state and local storage
+    setDoits(updatedDoits);
+    localStorage.setItem("doits", JSON.stringify(updatedDoits));
   }
 
   // Function to handle deleting a doit
-  async function handleDelete(id) {
+  function handleDelete(id) {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      try {
-        // Perform the local storage operation
-        const updatedDoits = doits.filter((doit) => doit.id !== id);
-        setDoits(updatedDoits);
-        localStorage.setItem("doits", JSON.stringify(updatedDoits));
-
-        // Send a DELETE request to remove the selected doit from the backend
-        const response = await fetch(`${baseUrl}/deleteDoit`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to delete the doit");
-        }
-      } catch (error) {
-        console.error("Error deleting data:", error);
-      }
+      // Filter out the selected doit and update the state and local storage
+      const updatedDoits = doits.filter((doit) => doit.id !== id);
+      setDoits(updatedDoits);
+      localStorage.setItem("doits", JSON.stringify(updatedDoits));
     }
   }
 
