@@ -27,7 +27,7 @@ function App() {
     };
 
     fetchDoits(); // Call the function to fetch doits
-  }, []);
+  }, [doits]);
 
   // Function to add a new doit
   async function addDoit(newItem) {
