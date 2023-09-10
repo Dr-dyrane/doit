@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import Form from './Form';
 import DoitItem from './DoitItem';
 import { db } from '../../firebase'; // Import the Firebase instance
+import { getDocs, collection, addDoc, updateDoc, deleteDoc } from 'firebase/firestore'; // Import Firestore functions
 
 function App() {
   const [doits, setDoits] = useState([]);
