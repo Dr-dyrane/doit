@@ -77,6 +77,10 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 
 You can access the Doit application by visiting the following URL:
 
+Primary domain
+[Doit - To-Do List App](https://doit.dr-dyrane.tech)
+
+Netlify Subdomain
 [Doit - To-Do List App](https://doit-by-dyrane.netlify.app)
 
 ## License
