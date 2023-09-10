@@ -4,15 +4,21 @@ import Form from "./Form";
 import DoitItem from "./DoitItem";
 
 function App() {
+  // State to hold the list of doits
   const [doits, setDoits] = useState([]);
+  
+  // Define the base URL of your backend API
+  const backendUrl = "https://doit-backend.vercel.app/"//"http://localhost:3001/api/doits"; // Replace with your backend API URL
 
+  // Fetch the list of doits from the backend when the component mounts
   useEffect(() => {
-    const storedDoits = localStorage.getItem("doits");
-    if (storedDoits) {
-      setDoits(JSON.parse(storedDoits));
-    }
+    fetch(backendUrl)
+      .then((response) => response.json())
+      .then((data) => setDoits(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
+  // Function to add a new doit
   function addDoit(newItem) {
     if (newItem.trim() !== "") {
       const newDoit = {
@@ -21,28 +27,64 @@ function App() {
         completed: false,
       };
 
-      const updatedDoits = [...doits, newDoit];
-      setDoits(updatedDoits);
-      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+      // Send a POST request to add the new doit to the backend
+      fetch(backendUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newDoit),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const updatedDoits = [...doits, data];
+          setDoits(updatedDoits);
+          localStorage.setItem("doits", JSON.stringify(updatedDoits));
+        })
+        .catch((error) => console.error("Error adding data:", error));
     }
   }
 
+  // Function to handle checking/unchecking a doit
   function handleCheck(id) {
     const updatedDoits = doits.map((doit) =>
       doit.id === id ? { ...doit, completed: !doit.completed } : doit
     );
-    setDoits(updatedDoits);
-    localStorage.setItem("doits", JSON.stringify(updatedDoits));
+
+    // Send a PUT request to update the status of the selected doit on the backend
+    fetch(`${backendUrl}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedDoits.find((doit) => doit.id === id)),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setDoits(updatedDoits);
+        localStorage.setItem("doits", JSON.stringify(updatedDoits));
+      })
+      .catch((error) => console.error("Error updating data:", error));
   }
 
+  // Function to handle deleting a doit
   function handleDelete(id) {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      const updatedDoits = doits.filter((doit) => doit.id !== id);
-      setDoits(updatedDoits);
-      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+      // Send a DELETE request to remove the selected doit from the backend
+      fetch(`${backendUrl}/${id}`, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const updatedDoits = doits.filter((doit) => doit.id !== id);
+          setDoits(updatedDoits);
+          localStorage.setItem("doits", JSON.stringify(updatedDoits));
+        })
+        .catch((error) => console.error("Error deleting data:", error));
     }
   }
 
+  // Render the list of doits and the form to add new doits
   return (
     <div className="flex flex-col items-start font-semibold p-4 h-screen bg-[#003045]">
       <Form addDoit={addDoit} />
