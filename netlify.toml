@@ -1,7 +1,0 @@
-[build]
-  functions = "netlify/functions"
-  publish = "public"
-  command = "yarn build"  # Use "yarn" instead of "npm" to run the build script
-
-[functions]
-  node_bundler = "esbuild"
