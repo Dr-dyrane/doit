@@ -7,6 +7,7 @@ A simple to-do list application built with React.
 - [Author](#author)
 - [Description](#description)
 - [Features](#features)
+- [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
@@ -28,6 +29,49 @@ Doit is a minimalist to-do list app that allows you to create and manage your ta
 - Mark tasks as completed
 - Delete tasks
 - Responsive design
+- Data storage
+
+### Future features
+
+1. **User Authentication:** Implement user accounts and authentication so users can save their to-do lists across sessions.
+
+2. **Task Prioritization:** Allow users to assign priorities (high, medium, low) to tasks and display them accordingly.
+
+3. **Task Categories:** Add the ability to categorize tasks into different groups (e.g., work, personal, shopping).
+
+4. **Search and Filter:** Implement a search feature to find tasks quickly and provide filtering options (e.g., show completed, show by category).
+
+5. **Notifications:** Send reminders and notifications for upcoming tasks or deadlines.
+
+6. **Due Dates:** Allow users to set due dates for tasks and show them in a calendar view.
+
+7. **Notes and Descriptions:** Enable users to add notes or descriptions to tasks for more detailed information.
+
+8. **Collaboration:** Add collaboration features to share tasks and to-do lists with others.
+
+9. **Dark Mode:** Implement a dark mode for users who prefer a different color scheme.
+
+10. **Data Visualization:** Provide charts or graphs to visualize task completion over time or by category.
+
+11. **Performance Optimization:** Optimize the app's performance, especially if it becomes slow with a large number of tasks.
+
+12. **Mobile Apps:** Consider creating mobile versions of your app for iOS and Android using frameworks like React Native or Flutter.
+
+13. **Localization:** Add support for multiple languages to make your app accessible to a broader audience.
+
+14. **Accessibility:** Ensure your app is accessible to people with disabilities by following accessibility guidelines.
+
+15. **Data Backup:** Implement a backup and restore feature to prevent data loss.
+
+16. **Offline Mode:** Make the app functional even when the user is offline, with data synchronization when they reconnect.
+
+17. **Task Sharing:** Allow users to share tasks or to-do lists via email, SMS, or social media.
+
+18. **Task Reordering:** Enable users to reorder tasks manually or by priority.
+
+19. **Data Export:** Provide options for users to export their task data in various formats (e.g., CSV, JSON).
+
+20. **Gamification:** Add game-like elements to motivate users to complete tasks and achieve goals.
 
 ## Technologies Used
 
@@ -35,6 +79,7 @@ Doit is a minimalist to-do list app that allows you to create and manage your ta
 - Vite
 - React Spring
 - Tailwind CSS
+- Node.js with Express.js
 
 ## Getting Started
 
