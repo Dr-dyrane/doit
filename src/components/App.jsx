@@ -1,58 +1,78 @@
-import React, { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
-import Form from "./Form";
-import DoitItem from "./DoitItem";
+// ./src/components/App.jsx
+import React, { useState, useEffect } from 'react';
+import { v4 as uuid } from 'uuid';
+import Form from './Form';
+import DoitItem from './DoitItem';
+import { db } from '../../firebase'; // Import the Firebase instance
 
 function App() {
-  // State to hold the list of doits
   const [doits, setDoits] = useState([]);
 
-  // Fetch the list of doits from local storage when the component mounts
+  // Function to fetch doits from Firestore when the component mounts
   useEffect(() => {
-    const localData = localStorage.getItem("doits");
-    if (localData) {
-      setDoits(JSON.parse(localData));
-    }
+    const fetchDoits = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'doits'));
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDoits(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchDoits();
   }, []);
 
-  // Function to add a new doit
-  function addDoit(newItem) {
-    if (newItem.trim() !== "") {
+  // Function to add a new doit to Firestore
+  async function addDoit(newItem) {
+    if (newItem.trim() !== '') {
       const newDoit = {
-        id: uuid(),
         title: newItem,
         completed: false,
       };
 
-      // Update the state and local storage
-      const updatedDoits = [...doits, newDoit];
-      setDoits(updatedDoits);
-      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+      try {
+        const docRef = await addDoc(collection(db, 'doits'), newDoit);
+        const updatedDoits = [...doits, { ...newDoit, id: docRef.id }];
+        setDoits(updatedDoits);
+      } catch (error) {
+        console.error('Error adding data:', error);
+      }
     }
   }
 
-  // Function to handle checking/unchecking a doit
-  function handleCheck(id) {
+  // Function to handle checking/unchecking a doit in Firestore
+  async function handleCheck(id) {
     const updatedDoits = doits.map((doit) =>
       doit.id === id ? { ...doit, completed: !doit.completed } : doit
     );
 
-    // Update the state and local storage
-    setDoits(updatedDoits);
-    localStorage.setItem("doits", JSON.stringify(updatedDoits));
-  }
-
-  // Function to handle deleting a doit
-  function handleDelete(id) {
-    if (window.confirm("Are you sure you want to delete this task?")) {
-      // Filter out the selected doit and update the state and local storage
-      const updatedDoits = doits.filter((doit) => doit.id !== id);
+    try {
+      await updateDoc(doc(db, 'doits', id), {
+        completed: updatedDoits.find((doit) => doit.id === id).completed,
+      });
       setDoits(updatedDoits);
-      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+    } catch (error) {
+      console.error('Error updating data:', error);
     }
   }
 
-  // Render the list of doits and the form to add new doits
+  // Function to handle deleting a doit in Firestore
+  async function handleDelete(id) {
+    if (window.confirm('Are you sure you want to delete this task?')) {
+      try {
+        await deleteDoc(doc(db, 'doits', id));
+        const updatedDoits = doits.filter((doit) => doit.id !== id);
+        setDoits(updatedDoits);
+      } catch (error) {
+        console.error('Error deleting data:', error);
+      }
+    }
+  }
+
   return (
     <div className="flex flex-col items-start font-semibold p-4 h-screen bg-[#003045]">
       <Form addDoit={addDoit} />
