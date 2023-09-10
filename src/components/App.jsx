@@ -6,20 +6,31 @@ import DoitItem from "./DoitItem";
 function App() {
   // State to hold the list of doits
   const [doits, setDoits] = useState([]);
-  
-  // Define the base URL of your backend API
-  const backendUrl = "https://doit-backend.vercel.app/"//"http://localhost:3001/api/doits"; // Replace with your backend API URL
+
+  // Define the base URL of your Netlify Functions
+  const baseUrl = "/.netlify/functions";
 
   // Fetch the list of doits from the backend when the component mounts
   useEffect(() => {
-    fetch(backendUrl)
-      .then((response) => response.json())
-      .then((data) => setDoits(data))
-      .catch((error) => console.error("Error fetching data:", error));
+    // Define the function to fetch doits
+    const fetchDoits = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/getDoits`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch doits");
+        }
+        const data = await response.json();
+        setDoits(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchDoits(); // Call the function to fetch doits
   }, []);
 
   // Function to add a new doit
-  function addDoit(newItem) {
+  async function addDoit(newItem) {
     if (newItem.trim() !== "") {
       const newDoit = {
         id: uuid(),
@@ -27,60 +38,77 @@ function App() {
         completed: false,
       };
 
-      // Send a POST request to add the new doit to the backend
-      fetch(backendUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newDoit),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          const updatedDoits = [...doits, data];
-          setDoits(updatedDoits);
-          localStorage.setItem("doits", JSON.stringify(updatedDoits));
-        })
-        .catch((error) => console.error("Error adding data:", error));
+      try {
+        const response = await fetch(`${baseUrl}/addDoit`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newDoit),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to add a new doit");
+        }
+
+        const data = await response.json();
+        const updatedDoits = [...doits, data];
+        setDoits(updatedDoits);
+        localStorage.setItem("doits", JSON.stringify(updatedDoits));
+      } catch (error) {
+        console.error("Error adding data:", error);
+      }
     }
   }
 
   // Function to handle checking/unchecking a doit
-  function handleCheck(id) {
+  async function handleCheck(id) {
     const updatedDoits = doits.map((doit) =>
       doit.id === id ? { ...doit, completed: !doit.completed } : doit
     );
 
-    // Send a PUT request to update the status of the selected doit on the backend
-    fetch(`${backendUrl}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedDoits.find((doit) => doit.id === id)),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        setDoits(updatedDoits);
-        localStorage.setItem("doits", JSON.stringify(updatedDoits));
-      })
-      .catch((error) => console.error("Error updating data:", error));
+    try {
+      const response = await fetch(`${baseUrl}/updateDoit`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedDoits.find((doit) => doit.id === id)),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update the doit");
+      }
+
+      setDoits(updatedDoits);
+      localStorage.setItem("doits", JSON.stringify(updatedDoits));
+    } catch (error) {
+      console.error("Error updating data:", error);
+    }
   }
 
   // Function to handle deleting a doit
-  function handleDelete(id) {
+  async function handleDelete(id) {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      // Send a DELETE request to remove the selected doit from the backend
-      fetch(`${backendUrl}/${id}`, {
-        method: "DELETE",
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          const updatedDoits = doits.filter((doit) => doit.id !== id);
-          setDoits(updatedDoits);
-          localStorage.setItem("doits", JSON.stringify(updatedDoits));
-        })
-        .catch((error) => console.error("Error deleting data:", error));
+      try {
+        const response = await fetch(`${baseUrl}/deleteDoit`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }), // Send the ID of the task to delete
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to delete the doit");
+        }
+
+        const updatedDoits = doits.filter((doit) => doit.id !== id);
+        setDoits(updatedDoits);
+        localStorage.setItem("doits", JSON.stringify(updatedDoits));
+      } catch (error) {
+        console.error("Error deleting data:", error);
+      }
     }
   }
 
