@@ -25,3 +25,6 @@ dist-ssr
 
 #App jsx backup
 App.original.jsx
+
+#Enviroment variable
+.env
