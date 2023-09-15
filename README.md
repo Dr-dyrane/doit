@@ -23,6 +23,8 @@ A simple to-do list application built with React.
 
 Doit is a minimalist to-do list app that allows you to create and manage your tasks efficiently. It provides a clean and intuitive user interface, making it easy to stay organized and productive.
 
+The code structure used classes to create structured components with defined behaviors, enhancing code organization and maintainability. Switch statements and try-catch-finally blocks are utilized for conditional routing and error handling, ensuring the app responds appropriately to different user interactions and potential issues, respectively.
+
 ## Features
 
 - Add new tasks
@@ -79,7 +81,7 @@ Doit is a minimalist to-do list app that allows you to create and manage your ta
 - Vite
 - React Spring
 - Tailwind CSS
-- Node.js with Express.js
+- Firebase
 
 ## Getting Started
 
