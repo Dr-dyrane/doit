@@ -1,21 +1,54 @@
-// Import necessary dependencies
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-// Import your page components
 import Home from '../pages/Home';
-// Import other page components as needed
+import Login from '../pages/Login';
+import Footer from './Footer';
 
-// Define your routes using Routes
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Add other routes here */}
-      </Routes>
-    </Router>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
+    };
+  }
+
+  handleLogin = () => {
+    // Handle login logic and set the isLoggedIn state to true
+    this.setState({ isLoggedIn: true });
+    localStorage.setItem('isLoggedIn', 'true');
+    console.log('User logged in.'); // Log login status
+  };
+
+  handleLogout = () => {
+    // Handle logout logic and set the isLoggedIn state to false
+    this.setState({ isLoggedIn: false });
+    localStorage.removeItem('isLoggedIn');
+    console.log('User logged out.'); // Log logout status
+  };
+
+  render() {
+    const { isLoggedIn } = this.state;
+
+    console.log('Current login status:', isLoggedIn); // Log current login status
+
+    return (
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Routes>
+            {/* Render Home or Login based on isLoggedIn */}
+            {isLoggedIn ? (
+              <Route path="/" element={<Home onLogout={this.handleLogout} />} />
+            ) : (
+              <Route path="/" element={<Login onLogin={this.handleLogin} />} />
+            )}
+          </Routes>
+
+          {/* Add the Footer component */}
+          <Footer isLoggedIn={isLoggedIn} onLogout={this.handleLogout} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

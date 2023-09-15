@@ -25,6 +25,30 @@ Doit is a minimalist to-do list app that allows you to create and manage your ta
 
 The code structure used classes to create structured components with defined behaviors, enhancing code organization and maintainability. Switch statements and try-catch-finally blocks are utilized for conditional routing and error handling, ensuring the app responds appropriately to different user interactions and potential issues, respectively.
 
+Here's a summary of how different JavaScript features are used in the code:
+
+1. **Classes**:
+   - I've used classes to define my React components. For example, `App`, `Home`, and `Login` are implemented as classes extending `Component`.
+
+2. **Switch Statements**:
+   - In the `Login` component, I've used a switch statement to handle the login logic based on the username input.
+   - Remember 
+   ```
+   username - user
+   password - password
+   ```
+
+3. **Try-Catch-Finally Statements**:
+   - I've used try-catch blocks in the `Home` component to handle potential errors that might occur when interacting with Firebase for fetching, adding, updating, or deleting doits. This helps in gracefully handling errors and preventing crashes.
+
+Now, let's explain how to use your application:
+
+- The application consists of two main components: `Home` and `Login`.
+- The initial state of `isLoggedIn` is `false`. If the user is not logged in, the `Login` component is rendered, where the user can enter a username and password.
+- To log in, the user must enter the username "user" and the password "password." When this combination is entered, the `onLogin` function is called, setting the `isLoggedIn` state to `true`.
+- If the user logs in successfully, the `Home` component is rendered. Here, you can add, check, uncheck, and delete "doits," which are tasks or to-do items.
+- The application also uses local storage to persist the login status. So, if the user refreshes the page or returns later, they will remain logged in until they explicitly log out by clicking the "Logout" button in the footer.
+
 ## Features
 
 - Add new tasks
