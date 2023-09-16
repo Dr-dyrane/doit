@@ -14,15 +14,12 @@ class Footer extends Component {
             >
               Logout
             </button>
-          ) : (
-<img
-              src="/public/doit.svg" // Replace with the path to your logo
-              alt="Doit Logo"
-              className="w-12 h-12 mx-auto mb-2"
-            />
+          ) : (<><p className="mt-2 text-gray-200 text-sm">
+          Don't <s>just</s> do it, do it!!!
+        </p></>
           )}
 
-          <p className="mt-2 text-gray-400">
+          <p className="mt-2 text-gray-400 text-sm">
             &copy; 2023 Doit. All rights reserved. By Dyrane.
           </p>
         </div>

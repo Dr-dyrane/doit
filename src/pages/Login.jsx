@@ -42,25 +42,31 @@ class Login extends Component {
 
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#003045]">
-        <div className="bg-white p-6 rounded-lg shadow-lg">
+        {/* Logo */}
+        <img
+          src='/public/doit.png'
+          alt="doit-logo"
+          className="w-24 h-24 mb-4"
+        />
+        <div className="bg-slate-200 p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-semibold mb-4">Login to doit</h2>
           <input
             type="text"
             placeholder="Username"
             value={username}
             onChange={this.handleUsernameChange}
-            className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+            className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={this.handlePasswordChange}
-            className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+            className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
           />
           <button
             onClick={this.handleLogin}
-            className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500"
+            className="w-full bg-purple-500 text-white font-semibold py-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-500"
           >
             Login
           </button>
