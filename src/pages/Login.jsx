@@ -44,7 +44,7 @@ class Login extends Component {
 			<div className="flex flex-col items-center justify-center min-h-screen bg-[#003045]">
 				{/* Text Logo */}
 				<h1 className="text-4xl font-bold text-purple-600 mb-4">
-					Doit<sup className="m-1 text-2xl text-purple-600">&#174;</sup>
+					Doit
 				</h1>
 				<div className="bg-slate-200 p-6 rounded-lg shadow-lg">
 					<h2 className="text-2xl font-semibold mb-4">Login to doit</h2>
