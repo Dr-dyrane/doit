@@ -9,6 +9,7 @@ class Signup extends Component {
 			email: "",
 			password: "",
 			signupError: "",
+			isRegistered: false,
 		};
 	}
 
@@ -41,6 +42,7 @@ class Signup extends Component {
 							// Handle registration for other user types or scenarios
 							break;
 					}
+					this.setState({ isRegistered: true });
 				}
 			);
 		} catch (err) {
@@ -50,7 +52,7 @@ class Signup extends Component {
 	};
 
 	render() {
-		const { email, password, signupError } = this.state;
+		const { email, password, signupError, isRegistered  } = this.state;
 
 		return (
 			<div className="flex flex-col items-center justify-center min-h-screen bg-[#003045]">
@@ -81,10 +83,12 @@ class Signup extends Component {
 					{signupError && <p className="text-red-500 mt-2">{signupError}</p>}
 
 					{/* Link back to the Login page */}
-					<p className="mt-4 text-gray-500 text-sm">
-						Already have an account?{" "}
+					<p className={`mt-4 text-gray-500 text-sm ${isRegistered ? 'text-green-500' : ''}`}>
+					{isRegistered
+							? "Account registration successful, proceed to "
+							: "Already have an account? "}
 						<Link to="/" className="text-purple-600 hover:underline">
-							Login
+							{isRegistered ? "Home" : "Login" }
 						</Link>
 					</p>
 				</div>
