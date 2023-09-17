@@ -13,7 +13,7 @@ class DoitItem extends Component {
             className="rounded appearance-none h-4 w-4 border border-gray-300 checked:bg-yellow-500 checked:border-transparent"
           />
           <span
-            className={`ml-2 overflow-x-auto whitespace-no-wrap lg:max-w-[150px] xl:max-w-[200px] ${doit.completed ? "line-through text-white" : ""}`}
+            className={`ml-2 ${doit.completed ? "line-through text-white" : ""}`}
           >
             {doit.title}
           </span>
