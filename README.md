@@ -31,10 +31,10 @@ Here's a summary of how different JavaScript features are used in the code:
    - I've used classes to define my React components. For example, `App`, `Home`, and `Login` are implemented as classes extending `Component`.
 
 2. **Switch Statements**:
-   - In the `Login` component, I've used a switch statement to handle the login logic based on the username input.
+   - In the `Signup` component, I've used a switch statement the to handle different scenarios based on the user's role. where i would implement different cases within the switch statement to perform specific actions or validations as needed for my application..
    - Remember 
    ```
-   username - user
+   email - user@gmail.com
    password - password
    ```
 
@@ -43,11 +43,12 @@ Here's a summary of how different JavaScript features are used in the code:
 
 Now, let's explain how to use your application:
 
-- The application consists of two main components: `Home` and `Login`.
+- The application consists of two main components: `Home` and `Login/Signup`.
 - The initial state of `isLoggedIn` is `false`. If the user is not logged in, the `Login` component is rendered, where the user can enter a username and password.
-- To log in, the user must enter the username "user" and the password "password." When this combination is entered, the `onLogin` function is called, setting the `isLoggedIn` state to `true`.
+- To log in, the user must enter the email "user@gmail.com" and the password "password" , if you do not widh to create an account for demo purposes. When this combination is entered, the `onLogin` function is called, setting the `isLoggedIn` state to `true`.
 - If the user logs in successfully, the `Home` component is rendered. Here, you can add, check, uncheck, and delete "doits," which are tasks or to-do items.
-- The application also uses local storage to persist the login status. So, if the user refreshes the page or returns later, they will remain logged in until they explicitly log out by clicking the "Logout" button in the footer.
+- The application also uses firestore to persist the login status. So, if the user refreshes the page or returns later, they will remain logged in until they explicitly log out by clicking the "Logout" button in the footer.
+- You can also create an demo account when you signup, no email validation needed yet, this would create a user with unique doits priviledge.
 
 ## Features
 
@@ -56,10 +57,11 @@ Now, let's explain how to use your application:
 - Delete tasks
 - Responsive design
 - Data storage
+- User Authentication
 
 ### Future features
 
-1. **User Authentication:** Implement user accounts and authentication so users can save their to-do lists across sessions.
+1. **User Authentication:** Implement user accounts and authentication so users can save their to-do lists across sessions - In progress
 
 2. **Task Prioritization:** Allow users to assign priorities (high, medium, low) to tasks and display them accordingly.
 
