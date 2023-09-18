@@ -32,6 +32,7 @@ Here's a summary of how different JavaScript features are used in the code:
 
 2. **Switch Statements**:
    - In the `Signup` component, I've used a switch statement the to handle different scenarios based on the user's role. where i would implement different cases within the switch statement to perform specific actions or validations as needed for my application..
+   - In the `DoitItem` component, I used use a switch statement to evaluate the condition titleElement.scrollWidth > titleElement.clientWidth and apply the "marquee-scroll" class when the condition is true. This approach provides a more structured way to handle different cases.
    - Remember 
    ```
    email - user@gmail.com

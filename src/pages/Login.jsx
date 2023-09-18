@@ -33,7 +33,8 @@ class Login extends Component {
       signInWithEmailAndPassword(this.auth, email, password).then((userCredential) => {
         // User logged in successfully
         const user = userCredential.user;
-        console.log('User logged in:', user);
+        console.log('User logged in.');
+        //console.log('User logged in:', user);
       });
     } catch (err) {
       // Handle login errors
