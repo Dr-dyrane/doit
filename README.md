@@ -46,7 +46,7 @@ password - password
 
 - The application consists of two main components: `Home` and `Login/Signup`.
 - The initial state of `isLoggedIn` is `false`. If the user is not logged in, the `Login` component is rendered, where the user can enter a username and password.
-- To log in, the user must enter the email "user@gmail.com" and the password "password" , if you do not widh to create an account for demo purposes. When this combination is entered, the `onLogin` function is called, setting the `isLoggedIn` state to `true`.
+- To log in, the user must enter the email "user@gmail.com" and the password "password" , if you do not wish to create an account for demo purposes. When this combination is entered, the `onLogin` function is called, setting the `isLoggedIn` state to `true`.
 - If the user logs in successfully, the `Home` component is rendered. Here, you can add, check, uncheck, and delete "doits," which are tasks or to-do items.
 - The application also uses firestore to persist the login status. So, if the user refreshes the page or returns later, they will remain logged in until they explicitly log out by clicking the "Logout" button in the footer.
 - You can also create an demo account when you signup, no email validation needed yet, this would create a user with unique doits priviledge.
