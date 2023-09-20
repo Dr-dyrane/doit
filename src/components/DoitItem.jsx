@@ -48,7 +48,7 @@ class DoitItem extends Component {
               type="checkbox"
               checked={doit.completed}
               onChange={() => handleCheck(doit.id)}
-              className="rounded appearance-none h-4 w-4 border border-gray-300 checked:bg-yellow-500 checked:border-transparent"
+              className="rounded appearance-none h-4 w-4 border border-gray-300 checked:bg-purple-500 checked:border-transparent"
             />
           </div>
           <div
