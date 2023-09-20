@@ -31,18 +31,18 @@ Here's a summary of how different JavaScript features are used in the code:
    - I've used classes to define my React components. For example, `App`, `Home`, and `Login` are implemented as classes extending `Component`.
 
 2. **Switch Statements**:
-   - In the `Signup` component, I've used a switch statement the to handle different scenarios based on the user's role. where i would implement different cases within the switch statement to perform specific actions or validations as needed for my application..
    - In the `DoitItem` component, I used use a switch statement to evaluate the condition titleElement.scrollWidth > titleElement.clientWidth and apply the "marquee-scroll" class when the condition is true. This approach provides a more structured way to handle different cases.
-   - Remember 
-   ```
-   email - user@gmail.com
-   password - password
-   ```
 
 3. **Try-Catch-Finally Statements**:
    - I've used try-catch blocks in the `Home` component to handle potential errors that might occur when interacting with Firebase for fetching, adding, updating, or deleting doits. This helps in gracefully handling errors and preventing crashes.
 
 Now, let's explain how to use your application:
+
+- Remember 
+```
+email - user@gmail.com
+password - password
+```
 
 - The application consists of two main components: `Home` and `Login/Signup`.
 - The initial state of `isLoggedIn` is `false`. If the user is not logged in, the `Login` component is rendered, where the user can enter a username and password.
