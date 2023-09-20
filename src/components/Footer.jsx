@@ -5,7 +5,7 @@ class Footer extends Component {
     const { isLoggedIn, onLogout } = this.props;
 
     return (
-      <footer className="bg-slate-800 p-4 text-center">
+      <footer className="bg-slate-500 p-4 text-center">
         <div className="container mx-auto">
           {isLoggedIn ? (
             <button
