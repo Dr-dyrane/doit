@@ -6,6 +6,8 @@ import {
 	browserSessionPersistence,
     createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	GoogleAuthProvider,
+	signInWithPopup,
 	signOut,
 } from "firebase/auth";
 import LoadingAnimation from "../components/LoadingAnimation";
@@ -77,6 +79,19 @@ class AuthProvider extends Component {
 		}
 	};
 
+	handleGoogleLogin = async () => {
+		try {
+		  const provider = new GoogleAuthProvider();
+		  await setPersistence(this.auth, browserSessionPersistence);
+		  const userCredential = await signInWithPopup(this.auth, provider);
+		  const user = userCredential.user;
+		  this.setState({ user, error: null });
+		} catch (error) {
+		  console.error("Error during Google login:", error);
+		  this.setState({ error });
+		}
+	  };	  
+
 	handleLogout = async () => {
 		this.setState({ loading: true });
 		try {
@@ -137,6 +152,7 @@ class AuthProvider extends Component {
 			handleLogin: this.handleLogin,
 			handleLogout: this.handleLogout,
 			handleSignup: this.handleSignup,
+			handleGoogleLogin: this.handleGoogleLogin,
 		};
 
 		if (loadingInitial) {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../hooks/AuthProvider"; // Import the AuthContext from your actual file path
+import { FcGoogle } from "react-icons/fc"; 
 
 class Login extends Component {
 	constructor(props) {
@@ -52,6 +53,15 @@ class Login extends Component {
 								Login
 							</button>
 							{loginError && <p className="text-red-500 mt-2">{loginError}</p>}
+
+							{/* "Login with Google" button */}
+							<button
+								onClick={() => context.handleGoogleLogin()}
+								className="w-full mt-3 flex justify-center bg-slate-300 text-black font-semibold py-2 rounded-md hover:bg-blue-700 hover:text-white focus:outline-none focus:ring focus:ring-blue-500"
+							>
+								<span className="mr-2"><FcGoogle size={24} /></span>Login with Google
+								{/* Include the FcGoogle icon */}
+							</button>
 
 							{/* Link to Sign Up page with pre-filled data */}
 							<p className="mt-4 text-gray-500 text-sm">
