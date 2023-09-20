@@ -5,7 +5,7 @@ class Footer extends Component {
     const { isLoggedIn, onLogout } = this.props;
 
     return (
-      <footer className="bg-slate-500 p-4 text-center">
+      <footer className="bg-slate-200 p-4 text-center">
         <div className="container mx-auto">
           {isLoggedIn ? (
             <button
@@ -14,12 +14,12 @@ class Footer extends Component {
             >
               Logout
             </button>
-          ) : (<><p className="mt-2 text-gray-200 text-sm">
+          ) : (<><p className="mt-2 text-black text-sm">
           Don't <s>just</s> do it, do it!!!
         </p></>
           )}
 
-          <p className="mt-2 text-gray-400 text-sm">
+          <p className="mt-2 text-gray-500 text-sm">
             &copy; 2023 Doit. All rights reserved. By Dyrane.
           </p>
         </div>

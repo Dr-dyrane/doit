@@ -34,7 +34,7 @@ class Form extends Component {
           />
           <button
             type="submit"
-            className="bg-transparent inline-flex border border-purple-500 text-purple-500 px-4 py-2 rounded-r-lg hover:bg-purple-500 hover:text-white transition-colors duration-300"
+            className="bg-transparent inline-flex border border-purple-600 text-purple-600 px-4 py-2 rounded-r-lg hover:bg-purple-500 hover:text-white transition-colors duration-300"
           >
             Add
           </button>

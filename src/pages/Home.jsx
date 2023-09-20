@@ -112,9 +112,9 @@ class Home extends Component {
         <Form addDoit={(newItem) => this.addDoit(newItem)} />
 
         <div className="w-full">
-          <h1 className="text-purple-500 text-2xl mt-4">My doits</h1>
+          <h1 className="text-purple-700 text-4xl mt-4">My doits</h1>
           {doits.length === 0 ? (
-            <p className="text-white mt-2">No doits to display</p>
+            <p className="text-black mt-2">No doits to display</p>
           ) : (
             <ul className="mt-2">
               {/* Map and render the list of doits using the DoitItem component */}
