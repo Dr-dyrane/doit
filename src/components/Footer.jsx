@@ -10,7 +10,7 @@ class Footer extends Component {
           {isLoggedIn ? (
             <button
               onClick={onLogout}
-              className="bg-red-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-500"
+              className="bg-red-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-600 hover:text-white hover:border-red-500 focus:outline-none focus:ring focus:ring-red-500"
             >
               Logout
             </button>
