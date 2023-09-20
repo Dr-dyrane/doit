@@ -107,7 +107,7 @@ class Home extends Component {
     const { doits } = this.state;
 
     return (
-      <div className="flex flex-col items-start font-semibold p-4 h-screen bg-[#003045]">
+      <div className="flex flex-col items-start font-semibold p-4 h-screen bg-slate-300">
         {/* Render the Form component for adding new doits */}
         <Form addDoit={(newItem) => this.addDoit(newItem)} />
 
