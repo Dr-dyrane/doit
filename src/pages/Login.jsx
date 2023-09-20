@@ -26,7 +26,7 @@ class Login extends Component {
 		return (
 			<AuthContext.Consumer>
 				{(context) => (
-					<div className="flex flex-col items-center justify-center min-h-screen bg-[#003045]">
+					<div className="flex flex-col items-center justify-center min-h-screen bg-slate-300">
 						{/* Text Logo */}
 						<h1 className="text-4xl font-bold text-purple-600 mb-4">Doit</h1>
 						<div className="bg-slate-200 p-6 rounded-lg shadow-lg">
