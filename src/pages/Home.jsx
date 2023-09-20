@@ -112,7 +112,7 @@ class Home extends Component {
         <Form addDoit={(newItem) => this.addDoit(newItem)} />
 
         <div className="w-full">
-          <h1 className="text-yellow-500 text-2xl mt-4">My doits</h1>
+          <h1 className="text-purple-500 text-2xl mt-4">My doits</h1>
           {doits.length === 0 ? (
             <p className="text-white mt-2">No doits to display</p>
           ) : (
