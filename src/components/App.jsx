@@ -15,7 +15,7 @@ class App extends Component {
 						<div className="min-h-screen flex flex-col">
 							<Routes>
 								{/* Render Home or Login based on isLoggedIn */}
-								{context.user ? (
+								{context.user || context.isRegistered ? (
 									<Route path="/" element={<Home />} />
 								) : (
 									<Route path="/" element={<Login />} />
