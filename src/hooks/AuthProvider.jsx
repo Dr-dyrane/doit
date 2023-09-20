@@ -4,7 +4,7 @@ import {
 	onAuthStateChanged,
 	setPersistence,
 	browserSessionPersistence,
-    createUserWithEmailAndPassword,
+	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	GoogleAuthProvider,
 	signInWithPopup,
@@ -22,7 +22,7 @@ class AuthProvider extends Component {
 			error: null,
 			loadingInitial: true,
 			loading: false,
-            isRegistered: false,
+			isRegistered: false,
 		};
 		this.auth = getAuth(); // Initialize Firebase auth instance
 	}
@@ -69,11 +69,12 @@ class AuthProvider extends Component {
 				password
 			);
 			// User logged in successfully
-			console.error("Error during login:", error.code, error.message);
-			this.setState({ error: error.message });
+			const user = userCredential.user;
+			console.log("User logged in:", user);
 		} catch (error) {
 			// Handle login errors
-			this.setState({ error });
+			console.error("Error during login:", error.code, error.message);
+			this.setState({ error: error.message });
 		} finally {
 			this.setState({ loading: false });
 		}
@@ -81,16 +82,19 @@ class AuthProvider extends Component {
 
 	handleGoogleLogin = async () => {
 		try {
-		  const provider = new GoogleAuthProvider();
-		  await setPersistence(this.auth, browserSessionPersistence);
-		  const userCredential = await signInWithPopup(this.auth, provider);
-		  const user = userCredential.user;
-		  this.setState({ user, error: null });
+			this.setState({ loading: true });
+			const provider = new GoogleAuthProvider();
+			await setPersistence(this.auth, browserSessionPersistence);
+			const userCredential = await signInWithPopup(this.auth, provider);
+			const user = userCredential.user;
+			this.setState({ user, error: null });
 		} catch (error) {
-		  console.error("Error during Google login:", error);
-		  this.setState({ error });
+			console.error("Error during Google login:", error);
+			this.setState({ error: error.message });
+		} finally {
+			this.setState({ loading: false });
 		}
-	  };	  
+	};
 
 	handleLogout = async () => {
 		this.setState({ loading: true });
@@ -114,31 +118,31 @@ class AuthProvider extends Component {
 		return emailRegex.test(email);
 	};
 
-    handleSignup = async (email, password) => {
-        if (!this.isValidEmail(email)) {
-          this.setState({ error: "Invalid email address" });
-          return;
-        }
-    
-        try {
-          this.setState({ loading: true });
-          const userCredential = await createUserWithEmailAndPassword(
-            this.auth,
-            email,
-            password
-          );
-          // User registered successfully
-          const user = userCredential.user;
-          console.log("User registered:", user);
-          this.setState({ isRegistered: true }); // Set isRegistered to true on successful registration
-        } catch (error) {
-          // Handle signup errors
-          console.error("Error during signup:", error.code, error.message);
-          this.setState({ error: error.message });
-        } finally {
-          this.setState({ loading: false });
-        }
-      };
+	handleSignup = async (email, password) => {
+		if (!this.isValidEmail(email)) {
+			this.setState({ error: "Invalid email address" });
+			return;
+		}
+
+		try {
+			this.setState({ loading: true });
+			const userCredential = await createUserWithEmailAndPassword(
+				this.auth,
+				email,
+				password
+			);
+			// User registered successfully
+			const user = userCredential.user;
+			console.log("User registered:", user);
+			this.setState({ isRegistered: true }); // Set isRegistered to true on successful registration
+		} catch (error) {
+			// Handle signup errors
+			console.error("Error during signup:", error.code, error.message);
+			this.setState({ error: error.message });
+		} finally {
+			this.setState({ loading: false });
+		}
+	};
 
 	render() {
 		const { user, error, loadingInitial, loading, isRegistered } = this.state;
@@ -148,7 +152,7 @@ class AuthProvider extends Component {
 			loading,
 			user,
 			error,
-            isRegistered,
+			isRegistered,
 			handleLogin: this.handleLogin,
 			handleLogout: this.handleLogout,
 			handleSignup: this.handleSignup,

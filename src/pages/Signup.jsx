@@ -8,7 +8,6 @@ class Signup extends Component {
     this.state = {
       email: "",
       password: "",
-      signupError: "",
     };
   }
 
@@ -21,7 +20,7 @@ class Signup extends Component {
   };
 
   render() {
-    const { email, password, signupError } = this.state;
+    const { email, password } = this.state;
 
     return (
       <AuthContext.Consumer>
@@ -50,8 +49,8 @@ class Signup extends Component {
               >
                 Register
               </button>
-              {signupError && (
-                <p className="text-red-500 mt-2">{signupError}</p>
+              {context.error && (
+                <p className="text-red-500 mt-2">{context.error}</p>
               )}
               <p
                 className={`mt-4 text-gray-500 text-sm ${

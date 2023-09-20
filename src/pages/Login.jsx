@@ -9,7 +9,6 @@ class Login extends Component {
 		this.state = {
 			email: "",
 			password: "",
-			loginError: "",
 		};
 	}
 
@@ -22,7 +21,7 @@ class Login extends Component {
 	};
 
 	render() {
-		const { email, password, loginError } = this.state;
+		const { email, password } = this.state;
 
 		return (
 			<AuthContext.Consumer>
@@ -52,7 +51,7 @@ class Login extends Component {
 							>
 								Login
 							</button>
-							{loginError && <p className="text-red-500 mt-2">{loginError}</p>}
+							{context.error && <p className="text-red-500 mt-2">{context.error}</p>}
 
 							{/* "Login with Google" button */}
 							<button
