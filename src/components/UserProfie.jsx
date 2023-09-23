@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { AuthContext } from "../hooks/AuthProvider";
 import { MdMoreVert } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom"; // Import the Link component
 
 class UserProfile extends Component {
 	render() {
@@ -41,9 +42,11 @@ class UserProfile extends Component {
 						{/* Right: Search and More Buttons */}
 						<div className="flex space-x-0 bg-transparent text-purple-600">
 							{/* Search Button */}
-							<button className="p-2 rounded-full hover:bg-slate-200 focus:outline-none">
-								<BsSearch size={24} />
-							</button>
+							<Link to="/search">
+								<button className="p-2 rounded-full hover:bg-slate-200 focus:outline-none">
+									<BsSearch size={24} />
+								</button>
+							</Link>
 
 							{/* More Button */}
 							<button className="p-2 rounded-full hover:bg-slate-200 focus:outline-none">
