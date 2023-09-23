@@ -128,7 +128,7 @@ class Home extends Component {
 						</ul>
 					)}
 				</div>
-				<div className="flex-shrink-0 w-full">
+				<div className="flex-shrink-0 mt-2 w-full">
 					{/* Render the Form component for adding new doits */}
 					<Form addDoit={(newItem) => this.addDoit(newItem)} />
 				</div>
