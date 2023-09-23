@@ -64,7 +64,7 @@ class DoitItem extends Component {
         <button
           type="button"
           onClick={() => handleDelete(doit.id)}
-          className="border border-red-600 text-red-600 hover:bg-red-700 hover:text-white px-1 py-1 rounded-full"
+          className="border border-red-600 text-red-600 hover:bg-red-700 hover:text-white px-1 py-1 rounded-lg"
         >
           <MdRemove size={20} />
         </button>
