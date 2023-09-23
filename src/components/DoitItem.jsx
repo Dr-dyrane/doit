@@ -44,12 +44,12 @@ class DoitItem extends Component {
     return (
       <li className="flex shadow-md bg-slate-400/20 hover:bg-slate-200/50 items-center mb-4 justify-between p-4 rounded-xl">
         <label className="flex items-center text-black">
-          <div>
+          <div className="grid justify-items-stretch text-xl font-black">
             <input
               type="checkbox"
               checked={doit.completed}
               onChange={() => handleCheck(doit.id)}
-              className="rounded appearance-none h-5 w-5 border border-gray-900 hover:bg-purple-500 hover:border-transparent checked:bg-purple-600 checked:border-transparent"
+              className="rounded-full justify-self-centerr appearance-none h-6 w-6 border border-gray-900 hover:bg-purple-500 hover:border-transparent checked:bg-purple-600 checked:border-transparent"
             />
           </div>
           <div
@@ -64,7 +64,7 @@ class DoitItem extends Component {
         <button
           type="button"
           onClick={() => handleDelete(doit.id)}
-          className="border border-red-600 text-red-600 hover:bg-red-700 hover:text-white px-1 py-1 rounded-lg"
+          className="border border-red-600 text-xl text-red-600 hover:bg-red-700 hover:text-white px-1 py-1 rounded-full"
         >
           <MdRemove size={20} />
         </button>
