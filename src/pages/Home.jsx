@@ -111,7 +111,7 @@ class Home extends Component {
 			<div className="flex flex-col items-center justify-between font-semibold p-4 h-screen bg-slate-300">
 				<div className="w-full h-3/4 text-center">
 					<div className="h-1/4">
-						<h1 className="text-purple-700 mt-20 font-bold text-4xl">My doits</h1>
+						<h1 className="text-purple-700 mt-16 font-bold text-4xl">My doits</h1>
 						<p className="text-purple-500 mt-2">doit</p>
 					</div>
           <div>
