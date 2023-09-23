@@ -36,18 +36,18 @@ class Login extends Component {
 								placeholder="Email"
 								value={email}
 								onChange={this.handleEmailChange}
-								className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
+								className="w-full px-4 py-2.5 mb-4 border rounded-lg focus:outline-none focus:ring focus:ring-purple-500"
 							/>
 							<input
 								type="password"
 								placeholder="Password"
 								value={password}
 								onChange={this.handlePasswordChange}
-								className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
+								className="w-full px-4 py-2.5 mb-4 border rounded-lg focus:outline-none focus:ring focus:ring-purple-500"
 							/>
 							<button
 								onClick={() => context.handleLogin(email, password)} // Use the handleLogin function from the context
-								className="w-full bg-purple-500 text-white font-semibold py-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-500"
+								className="w-full bg-purple-500 text-white font-semibold py-2.5 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-500"
 							>
 								Login
 							</button>
@@ -56,7 +56,7 @@ class Login extends Component {
 							{/* "Login with Google" button */}
 							<button
 								onClick={() => context.handleGoogleLogin()}
-								className="w-full mt-3 flex justify-center bg-slate-300 text-black font-semibold py-2 rounded-md hover:bg-blue-700 hover:text-white focus:outline-none focus:ring focus:ring-blue-500"
+								className="w-full mt-3 flex justify-center bg-slate-300 text-black font-semibold py-2.5 rounded-lg hover:bg-blue-700 hover:text-white focus:outline-none focus:ring focus:ring-blue-500"
 							>
 								<span className="mr-2"><FcGoogle size={24} /></span>Login with Google
 								{/* Include the FcGoogle icon */}

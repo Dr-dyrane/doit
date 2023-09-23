@@ -34,18 +34,18 @@ class Signup extends Component {
                 placeholder="Email"
                 value={email}
                 onChange={this.handleEmailChange}
-                className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
+                className="w-full px-4 py-2.5 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
               />
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={this.handlePasswordChange}
-                className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
+                className="w-full px-4 py-2.5 mb-4 border rounded-md focus:outline-none focus:ring focus:ring-purple-500"
               />
               <button
                 onClick={() => context.handleSignup(email, password)} // Use the handleSignup function from the context
-                className="w-full bg-purple-500 text-white font-semibold py-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-500"
+                className="w-full bg-purple-500 text-white font-semibold py-2.5 rounded-md hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-500"
               >
                 Register
               </button>
