@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 
 class UserProfile extends Component {
 	render() {
-        const defaultUserImage = "public/user.png"; // Set the default user image path here
+        const defaultUserImage = "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg"; // Set the default user image path here
 
 		return (
 			<AuthContext.Consumer>
@@ -26,7 +26,7 @@ class UserProfile extends Component {
 										? context.user.photoURL || defaultUserImage
 										: defaultUserImage
 								}
-								alt="User Profile"
+								alt="U"
 								className="w-full h-full object-cover"
 							/>
 						</div>
