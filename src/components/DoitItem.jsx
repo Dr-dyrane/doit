@@ -42,14 +42,14 @@ class DoitItem extends Component {
   render() {
     const { doit, handleCheck, handleDelete } = this.props;
     return (
-      <li className="flex items-center mb-4 justify-between">
+      <li className="flex shadow-md bg-slate-400/20 hover:bg-slate-200/50 items-center mb-4 justify-between p-4 rounded-xl">
         <label className="flex items-center text-black">
           <div>
             <input
               type="checkbox"
               checked={doit.completed}
               onChange={() => handleCheck(doit.id)}
-              className="rounded appearance-none h-5 w-5 border border-gray-900 checked:bg-purple-600 checked:border-transparent"
+              className="rounded appearance-none h-5 w-5 border border-gray-900 hover:bg-purple-500 hover:border-transparent checked:bg-purple-600 checked:border-transparent"
             />
           </div>
           <div

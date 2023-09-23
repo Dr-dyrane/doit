@@ -109,7 +109,7 @@ class Home extends Component {
 		return (
 			<div className="flex flex-col items-center justify-center font-semibold p-4 h-screen bg-slate-300">
 				<div className="w-full h-3/4 text-center">
-					<h1 className="text-purple-700 text-4xl h-1/4">My doits</h1>
+					<h1 className="text-purple-700 font-bold text-4xl h-1/4">My doits</h1>
 					{doits.length === 0 ? (
 						<p className="text-black mt-2">No doits to display</p>
 					) : (

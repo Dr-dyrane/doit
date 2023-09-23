@@ -50,7 +50,7 @@ class Form extends Component {
           />
           <button
             type="submit"
-            className={`bg-transparent hover:text-white ml-4 inline-flex border ${
+            className={`bg-transparent hover:text-white ml-4 inline-flex border shadow-lg ${
               hasText ? "bg-purple-600 text-white" : "border-purple-600 text-purple-600"
             } px-4 py-4 rounded-full hover:bg-purple-500 transition-colors duration-300`}
           >
