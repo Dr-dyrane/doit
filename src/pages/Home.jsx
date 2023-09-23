@@ -108,7 +108,7 @@ class Home extends Component {
 
 		return (
 			<div className="flex flex-col items-center justify-center font-semibold p-4 h-screen bg-slate-300">
-				<div className="w-full h-3/4 text-center p-4">
+				<div className="w-full h-3/4 text-center">
 					<h1 className="text-purple-700 text-4xl h-1/4">My doits</h1>
 					{doits.length === 0 ? (
 						<p className="text-black mt-2">No doits to display</p>
@@ -128,7 +128,7 @@ class Home extends Component {
 						</ul>
 					)}
 				</div>
-				<div className="flex-shrink-0 w-full p-4">
+				<div className="flex-shrink-0 w-full">
 					{/* Render the Form component for adding new doits */}
 					<Form addDoit={(newItem) => this.addDoit(newItem)} />
 				</div>
