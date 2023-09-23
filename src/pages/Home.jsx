@@ -113,7 +113,7 @@ class Home extends Component {
 					{doits.length === 0 ? (
 						<p className="text-black mt-2">No doits to display</p>
 					) : (
-						<ul className="mt-2 overflow-auto h-1/2">
+						<ul className="mt-2 overflow-auto h-3/4">
 							{/* Map and render the list of doits using the DoitItem component */}
 							{doits.map((doit) =>
 								doit && doit.id ? (
