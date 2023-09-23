@@ -12,7 +12,7 @@ class App extends Component {
           <Router>
             <div className="min-h-screen flex flex-col">
               <AppRoutes user={context.user} />
-              <Footer isLoggedIn={context.user !== null} onLogout={context.handleLogout} />
+              {/*<Footer isLoggedIn={context.user !== null} onLogout={context.handleLogout} />*/}
             </div>
           </Router>
         )}

@@ -109,8 +109,8 @@ class Home extends Component {
 
 		return (
 			<div className="flex flex-col items-center justify-between font-semibold p-4 h-screen bg-slate-300">
-				<div className="w-full h-3/4 text-center">
-					<div className="h-1/4 bg-slate-300 ">
+				<div className="w-full h-[90%] text-center">
+					<div className="h-[22%] bg-slate-300 ">
 						<h1 className="text-purple-700 mt-16 font-bold text-4xl">My doits</h1>
 						<p className="text-purple-500 mt-2 mb-10">doit</p>
             <div><UserProfile/></div>
@@ -118,7 +118,7 @@ class Home extends Component {
 					{doits.length === 0 ? (
 						<p className="text-black mt-2">No doits to display</p>
 					) : (
-						<ul className="mt-2 overflow-auto h-3/4">
+						<ul className="mt-2 overflow-auto h-[60%]">
 							{/* Map and render the list of doits using the DoitItem component */}
 							{doits.map((doit) =>
 								doit && doit.id ? (
@@ -133,7 +133,7 @@ class Home extends Component {
 						</ul>
 					)}
 				</div>
-				<div className="flex-shrink-0 shadow-t-md mb-12 rounded-lg w-full bg-slate-300">
+				<div className="flex-shrink-0 h-[10%] shadow-t-md my-4 rounded-lg w-full bg-slate-300">
 					{/* Render the Form component for adding new doits */}
 					<Form addDoit={(newItem) => this.addDoit(newItem)} />
 				</div>
