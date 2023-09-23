@@ -109,7 +109,7 @@ class Home extends Component {
 
 		return (
 			<div className="flex flex-col items-center justify-between font-semibold p-4 h-screen bg-slate-300">
-				<div className="w-full h-[88%] text-center">
+				<div className="w-full h-[86%] text-center">
 					<div className="h-[22%] bg-slate-300 ">
 						<h1 className="text-purple-700 mt-16 font-bold text-4xl">My doits</h1>
 						<p className="text-purple-500 mt-2 mb-10">doit</p>
