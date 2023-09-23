@@ -42,7 +42,7 @@ class DoitItem extends Component {
   render() {
     const { doit, handleCheck, handleDelete } = this.props;
     return (
-      <li className="flex items-center mb-2 justify-between">
+      <li className="flex items-center mb-4 justify-between">
         <label className="flex items-center text-black">
           <div>
             <input
