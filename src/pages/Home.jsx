@@ -107,9 +107,12 @@ class Home extends Component {
 		const { doits } = this.state;
 
 		return (
-			<div className="flex flex-col items-center justify-center font-semibold p-4 h-screen bg-slate-300">
+			<div className="flex flex-col items-center justify-between font-semibold p-4 h-screen bg-slate-300">
 				<div className="w-full h-3/4 text-center">
-					<h1 className="text-purple-700 font-bold text-4xl h-1/4">My doits</h1>
+					<div className="h-1/4">
+						<h1 className="text-purple-700 mt-10 font-bold text-4xl">My doits</h1>
+						<p className="text-purple-500 mt-2">doit</p>
+					</div>
 					{doits.length === 0 ? (
 						<p className="text-black mt-2">No doits to display</p>
 					) : (
@@ -128,7 +131,7 @@ class Home extends Component {
 						</ul>
 					)}
 				</div>
-				<div className="flex-shrink-0 mt-4 shadow-t-md w-full">
+				<div className="flex-shrink-0 shadow-t-md rounded-lg w-full">
 					{/* Render the Form component for adding new doits */}
 					<Form addDoit={(newItem) => this.addDoit(newItem)} />
 				</div>
