@@ -112,7 +112,11 @@ class Home extends Component {
 				<div className="w-full h-[86%] text-center">
 					<div className="h-[22%] bg-slate-300 ">
 						<h1 className="text-purple-700 mt-16 font-bold text-4xl">My doits</h1>
-						<p className="text-purple-500 mt-2 mb-10">doit</p>
+						<p className="text-purple-500 mt-2 mb-10">  {doits.length === 0
+            ? "doit"
+            : `${doits.filter((doit) => !doit.completed).length} ${
+                  doits.filter((doit) => !doit.completed).length === 1 ? "doit" : "doits"
+              } left to do`}</p>
             <div><UserProfile/></div>
 					</div>
 					{doits.length === 0 ? (
