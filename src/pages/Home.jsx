@@ -3,6 +3,7 @@ import Form from "../components/Form";
 import DoitItem from "../components/DoitItem";
 import FirebaseFunctions from "../api/firebaseFunctions"; // Import the FirebaseFunctions class instance
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import your Firebase auth instance
+import UserProfile from "../components/UserProfie";
 
 class Home extends Component {
 	constructor() {
@@ -110,9 +111,12 @@ class Home extends Component {
 			<div className="flex flex-col items-center justify-between font-semibold p-4 h-screen bg-slate-300">
 				<div className="w-full h-3/4 text-center">
 					<div className="h-1/4">
-						<h1 className="text-purple-700 mt-10 font-bold text-4xl">My doits</h1>
+						<h1 className="text-purple-700 mt-20 font-bold text-4xl">My doits</h1>
 						<p className="text-purple-500 mt-2">doit</p>
 					</div>
+          <div>
+          <UserProfile/>
+          </div>
 					{doits.length === 0 ? (
 						<p className="text-black mt-2">No doits to display</p>
 					) : (
