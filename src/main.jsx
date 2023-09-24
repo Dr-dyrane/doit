@@ -6,20 +6,34 @@ import "./assets/index.css";
 
 const rootElement = document.getElementById("root");
 
-// Create a root using createRoot
+async function registerServiceWorker() {
+  if ("serviceWorker" in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register("/service-worker.js");
+      console.log("Service Worker registered with scope:", registration.scope);
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
+    }
+  }
+}
+
+// Register the service worker when the page loads
+window.addEventListener("load", registerServiceWorker);
+
+// Create a root using ReactDOM.createRoot
 if (!rootElement._reactRootContainer) {
-	const root = ReactDOM.createRoot(rootElement);
+  const root = ReactDOM.createRoot(rootElement);
 
-	function Main() {
-		return (
-			<React.StrictMode>
-				<AuthProvider>
-					<App />
-				</AuthProvider>
-			</React.StrictMode>
-		);
-	}
+  function Main() {
+    return (
+      <React.StrictMode>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </React.StrictMode>
+    );
+  }
 
-	// Use .render() on the root to render the Main component
-	root.render(<Main />);
+  // Use .render() on the root to render the Main component
+  root.render(<Main />);
 }
