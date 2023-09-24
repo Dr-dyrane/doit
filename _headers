@@ -1,4 +1,2 @@
-/*
-  X-Content-Type-Options: nosniff
-/js/* 
-  Content-Type: application/javascript; charset=utf-8
+/service-worker.js
+  Content-Type: application/javascript
