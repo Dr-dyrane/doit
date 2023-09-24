@@ -9,8 +9,8 @@ const cacheUrls = [
 	"/",
 	"/index.html",
 	"/src/assets/index.css",
-	"/js/main.jsx",
-	"/public/doit.png",
+	"/src/main.jsx",
+	"/doit.png",
 	// Add more URLs of assets to cache here
 ];
 

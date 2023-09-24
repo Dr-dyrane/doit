@@ -16,12 +16,12 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: '/public/doit.png',
+            src: '/doit.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/public/doit.png',
+            src: '/doit.png',
             sizes: '512x512',
             type: 'image/png',
           },
