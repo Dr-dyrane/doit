@@ -7,11 +7,11 @@ import Search from "../pages/Search";
 
 class AppRoutes extends Component {
 	render() {
-		const { user } = this.props;
+		const { user, isLogged } = this.props;
 
 		return (
 			<Routes>
-				{user ? (
+				{user || isLogged ? (
 					<>
 						<Route path="/" element={<Home />} />
 						<Route path="/search" element={<Search />} />{" "}
