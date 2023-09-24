@@ -214,9 +214,9 @@ class AuthProvider extends Component {
 					isOpen={isOfflineModalOpen}
 					onRequestClose={this.handleCloseOfflineModal}
 				>
-					<div>
+					<div className="bg-slate-300 items-center justify-between">
 						<p>You are currently offline. Some features may be limited.</p>
-						<button onClick={this.handleCloseOfflineModal}>Close</button>
+						<button className ="w-full p-2 m-2 bg-purple-500 text-white rounded-lg shadow-lg hover:bg-purple-700" onClick={this.handleCloseOfflineModal}>Close</button>
 					</div>
 				</Modal>
 			</AuthContext.Provider>
