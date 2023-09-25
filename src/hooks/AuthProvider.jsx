@@ -212,11 +212,13 @@ class AuthProvider extends Component {
 				{/* Show the offline modal when offline */}
 				<Modal
 					isOpen={isOfflineModalOpen}
+					ariaHideApp={false}
 					onRequestClose={this.handleCloseOfflineModal}
+					className="flex rounded-xl p-2 bg-slate-300 items-center justify-centre h-screen"
 				>
-					<div className="flex bg-slate-300 items-center justify-between">
+					<div className="p-2 m-20 text-center">
 						<p>You are currently offline. Some features may be limited.</p>
-						<button className ="w-full p-2 m-2 bg-purple-500 text-white rounded-lg shadow-lg hover:bg-purple-700" onClick={this.handleCloseOfflineModal}>Close</button>
+						<button className ="w-full p-2 mt-20 bg-purple-500 text-white rounded-lg shadow-lg hover:bg-purple-700" onClick={this.handleCloseOfflineModal}>Close</button>
 					</div>
 				</Modal>
 			</AuthContext.Provider>
